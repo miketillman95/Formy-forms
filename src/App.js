@@ -1,19 +1,40 @@
 import { Link } from "react-router-dom";
+import React, {useState} from 'react'
 
 
-function App() {
+function App(props) {
+  
+  const [choreLogs, setChoreLogs] = useState('')
+
+    const addChoreLog= (log) => {
+      let logs = [...choreLogs, log]
+      setChoreLogs(logs)
+    }
+  
+ 
+
   return (
-   <div className='list-container'>
-    <div className='chore-header'>
+    <>
       <h1> All me types of forms mate</h1>
-      </div>
+      <section>
+        <div className='list-container'>
+          <div className='chore-header'>
+                </div>
 
-    <nav>
-      <Link to='/chores'>Chore List</Link>
-      </nav>
+              <nav>
+                <Link addChoreLog={addChoreLog} to='/chores'>Chore List</Link>
+                <br/>
+                <Link chore={choreLogs} to='/chorechart'>Chore Chart</Link>
 
-  </div>
+              </nav>
+        </div>
+      </section>
+    </>
   );
 }
 
 export default App;
+
+
+
+
