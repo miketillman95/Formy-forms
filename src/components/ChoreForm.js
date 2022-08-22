@@ -2,10 +2,10 @@ import React, {useState} from 'react'
 import { useNavigate } from 'react-router'
 
 
-const ChoreForm = (addChoreLog) => {
-    const [choreDesc, setChoreDesc] = useState('')
-    const [name, setName] = useState('')
-    const [date, setDate] = useState('')
+const ChoreForm = ({addChoreLog}) => {
+    const [choreDesc, setChoreDesc] = useState()
+    const [name, setName] = useState()
+    const [date, setDate] = useState()
     const navigate= useNavigate()
 
 

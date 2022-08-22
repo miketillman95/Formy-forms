@@ -4,8 +4,8 @@ import React, {useState} from 'react'
 
 function App(props) {
   
-  const [choreLogs, setChoreLogs] = useState('')
-
+  const [choreLogs, setChoreLogs] = useState([])
+  // adds chorelog
     const addChoreLog= (log) => {
       let logs = [...choreLogs, log]
       setChoreLogs(logs)
@@ -26,6 +26,8 @@ function App(props) {
                 <br/>
                 <Link chore={choreLogs} to='/chorechart'>Chore Chart</Link>
 
+                {console.log(addChoreLog)}
+                <br/>
               </nav>
         </div>
       </section>
