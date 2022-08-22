@@ -12,6 +12,7 @@ const ChoreChart = (props) => {
         </tr>
         </thead> 
             {props.chore.map((v, i) => {
+              // this wont show up 
         return <tr>
           <th>{v[0]}</th>
           <th>{v[1]}</th>
