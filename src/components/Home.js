@@ -24,7 +24,6 @@ const Home = () => {
                 <br/>
                 <Link chore={choreLogs} to='/chorechart'>Chore Chart</Link>
 
-                {console.log(addChoreLog)}
                 <br/>
               </nav>
         </div>

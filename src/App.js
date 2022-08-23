@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import ChoreForm from './components/ChoreForm';
 import ChoreChart from './components/ChoreChart';
