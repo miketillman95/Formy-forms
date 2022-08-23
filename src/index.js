@@ -10,14 +10,7 @@ import ChoreChart from './components/ChoreChart';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<App />} />
-        <Route path='/chores' element={<ChoreForm/>}/>
-        <Route path='/chorechart' element={<ChoreChart/>}/>
-
-      </Routes>
-    </BrowserRouter>
+    <App/>
 );
 
 // 

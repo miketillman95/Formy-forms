@@ -1,37 +1,24 @@
 import { Link } from "react-router-dom";
-import React, {useState} from 'react'
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import ChoreForm from './components/ChoreForm';
+import ChoreChart from './components/ChoreChart';
+import Home from "./components/Home";
 
 
-function App(props) {
-  
-  const [choreLogs, setChoreLogs] = useState([])
-  // adds chorelog
-    const addChoreLog= (log) => {
-      let logs = [...choreLogs, log]
-      setChoreLogs(logs)
-    }
-  
- 
+function App() {
 
   return (
-    <>
-      <h1> All me types of forms mate</h1>
-      <section>
-        <div className='list-container'>
-          <div className='chore-header'>
-                </div>
 
-              <nav>
-                <Link addChoreLog={addChoreLog} to='/chores'>Chore List</Link>
-                <br/>
-                <Link chore={choreLogs} to='/chorechart'>Chore Chart</Link>
+      <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<Home/>}/>
+        <Route path='/chores' element={<ChoreForm/>}/>
+        <Route path='/chorechart' element={<ChoreChart/>}/>
+      </Routes>
+    </BrowserRouter>
 
-                {console.log(addChoreLog)}
-                <br/>
-              </nav>
-        </div>
-      </section>
-    </>
+      
+    
   );
 }
 
