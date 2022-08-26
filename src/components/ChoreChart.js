@@ -1,7 +1,7 @@
 import React from 'react'
 
-const ChoreChart = ({chore}) => {
-  console.log(chore, typeof chore)
+const ChoreChart = ({choreLogs}) => {
+  // console.log(chore, typeof chore)
   return (
     <div className='choreLog-container'>
   <table>
@@ -12,7 +12,7 @@ const ChoreChart = ({chore}) => {
           <th>Date</th>
         </tr>
         </thead> 
-            {chore.map((v, i) => {
+            {choreLogs.map((v, i) => {
               // this wont show up 
         return <tr>
           <th>{v[0]}</th>

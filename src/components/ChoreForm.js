@@ -2,11 +2,13 @@ import React, {useEffect, useState} from 'react'
 import { useNavigate } from 'react-router'
 import ChoreChart from './ChoreChart'
 
-
+const innitalValue ={
+    name: '',
+    date: '',
+    choreDesc: ''
+}
 const ChoreForm = () => {
-    const [choreDesc, setChoreDesc] = useState('')
-    const [name, setName] = useState('')
-    const [date, setDate] = useState('')
+    const [formValues, setFormValues] = useState(innitalValue)
     const [formErrors, setFormErrors] = useState({})
     const navigate= useNavigate()
     const [isSubmitting, setIsSubmitting] = useState(false)
@@ -14,21 +16,28 @@ const ChoreForm = () => {
 
 
     const addChoreLog= (log) => {
-        console.log(log)
+        console.log(log, 'adding the chore to the log')
         setChoreLogs(...log)
     }
 
     const submitForm = () => {
-        console.log(name, date, choreDesc);
-      };
+        console.log(formValues, 'has been submitted')
+    };
+
+    const handleChange = (e) => {
+        const {name, value}= e.target
+
+        setFormValues({...formValues, [name]: value})
+    }
 
     const handleSubmit = (e) =>{
         // adds the chores of desc, name and date from the state in app.js
         e.preventDefault()
-        setFormErrors(validate(name, date, choreDesc))
-        addChoreLog([choreDesc, name, date])
-        console.log(name, date, choreDesc)
+        setFormErrors(validate(formValues))
+        addChoreLog([formValues])
         setIsSubmitting(true)
+
+
 
 
 
@@ -39,24 +48,24 @@ const ChoreForm = () => {
         
 
   
-    function validate(name, date, choreDesc) {
+    function validate(value) {
         console.log('here')
         let errors = {}
-        const regex =  /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i
+        const regex = /[ `!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/
 
-        if(!choreDesc) {
+        if(!value.choreDesc) {
             errors.choreDesc = "must enter a description"
     
-        }   else if (choreDesc.length < 10 ){
+        }   else if (value.choreDesc.length < 10 ){
             errors.choreDesc = "Description must be longer than 10 characters innit"
         }
-        if(!name.name){
+        if(!value.name){
             errors.name = "Cant be blank lad"
 
-        } else if (!regex.test(name.name)){
+        } else if (regex.test(value.name)){
             errors.name = 'Invalid name laddy'
         }
-        if(!date.date){
+        if(!value.date){
             errors.date = "Cant be blank lad"
 
     }
@@ -75,14 +84,15 @@ const ChoreForm = () => {
       
   return (
     <>
+    {/* form wonr clear after submission */}
 <form onSubmit={e => {handleSubmit(e)}}>
         <label> Chore description</label>
             <br/>
             <input 
                 name= 'choreDesc'
                 type= 'text'
-                onChange={e => setChoreDesc(e.target.value)}
-                value ={choreDesc}
+                onChange={handleChange}
+                value ={formValues.choreDesc}
                 />
                 <br/>
                 {
@@ -92,22 +102,29 @@ const ChoreForm = () => {
         <label>Name</label>
             <br/>
             <input 
-                name='userName'
+                name='name'
                 type= 'text'
-                onChange={e => setName(e.target.value)}
-                value ={name}
+                onChange={handleChange}
+                value ={formValues.name}
                 />
+                {
+                    formErrors.name && (
+                        <p className="error">{formErrors.name}</p>
+                )} 
                 <br/>
         <label>Date</label>
             <br/>
             <input 
             name='date'
             type= 'date'
-            onChange={e => setDate(e.target.value)}
-                value ={date}
+            onChange={handleChange}
+                value ={formValues.date}
             />
             <br/>
-            <br/>
+            {
+                    formErrors.date && (
+                        <p className="error">{formErrors.date}</p>
+                )}
         <input
             className='submitBtn'
             type = 'submit'
@@ -116,7 +133,9 @@ const ChoreForm = () => {
             />  
     </form>
  
-
+ {/* When uncommented screen goes blank on submit */}
+ {/* screen currently doesnt submit anything */}
+    {/* <ChoreChart chore={choreLogs}/> */}
     </>
     )
 }
