@@ -1,15 +1,12 @@
 import { Link } from "react-router-dom";
-import React, {useState} from 'react'
+import React from 'react'
 
 
 
 const Home = () => {
-    const [choreLogs, setChoreLogs] = useState([])
   // adds chorelog
-    const addChoreLog= (log) => {
-      let logs = [...choreLogs, log]
-      setChoreLogs(logs)
-    }
+
+    
   return (
     <div>
          <>
@@ -20,9 +17,9 @@ const Home = () => {
                 </div>
 
               <nav>
-                <Link addChoreLog={addChoreLog} to='/chores'>Chore List</Link>
+                <Link to='/chores'>Chore List</Link>
                 <br/>
-                <Link chore={choreLogs} to='/chorechart'>Chore Chart</Link>
+                <Link  to='/chorechart'>Chore Chart</Link>
 
                 <br/>
               </nav>

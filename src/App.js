@@ -4,7 +4,11 @@ import ChoreChart from './components/ChoreChart';
 import Home from "./components/Home";
 
 
+
 function App() {
+  // adds chorelog
+  
+    
 
   return (
 
