@@ -1,26 +1,16 @@
 import React from 'react'
 
 const ChoreChart = ({choreLogs}) => {
-  // console.log(chore, typeof chore)
   return (
     <div className='choreLog-container'>
-  <table>
-      <thead> 
-        <tr>
-          <th>Chore description</th>
-          <th>Name</th>
-          <th>Date</th>
-        </tr>
-        </thead> 
-            {choreLogs.map((v, i) => {
-              // this wont show up 
-        return <tr>
-          <th>{v[0]}</th>
-          <th>{v[1]}</th>
-          <th>{v[2]}</th>
-        </tr>
-      })}
-    </table>
+        <div className='chorelog-header'>
+         <h3>Name</h3> 
+         <h3>Date</h3>
+         <h3>Chore Description</h3>
+        </div>
+        <p>{choreLogs.name}</p>
+        <p>{choreLogs.date}</p>
+        <p>{choreLogs.choreDesc}</p>
     </div>
   )
 }

@@ -17,7 +17,7 @@ const ChoreForm = () => {
 
     const addChoreLog= (log) => {
         console.log(log, 'adding the chore to the log')
-        setChoreLogs(...log)
+        setChoreLogs(log)
     }
 
     const submitForm = () => {
@@ -34,7 +34,7 @@ const ChoreForm = () => {
         // adds the chores of desc, name and date from the state in app.js
         e.preventDefault()
         setFormErrors(validate(formValues))
-        addChoreLog([formValues])
+        addChoreLog(formValues)
         setIsSubmitting(true)
 
 
@@ -76,6 +76,7 @@ const ChoreForm = () => {
 
     useEffect(()=> {
         if(Object.keys(formErrors).length === 0 && isSubmitting){
+            console.log('hasiiii')
             submitForm()
         }
     }, [formErrors])
@@ -85,7 +86,10 @@ const ChoreForm = () => {
   return (
     <>
     {/* form wonr clear after submission */}
-<form onSubmit={e => {handleSubmit(e)}}>
+<form onSubmit={e => {handleSubmit(e)}} noValidate>
+{Object.keys(formErrors).length === 0 && isSubmitting && (
+        <span className="success-msg">Submitted successfully</span>
+      )}
         <label> Chore description</label>
             <br/>
             <input 
@@ -133,9 +137,7 @@ const ChoreForm = () => {
             />  
     </form>
  
- {/* When uncommented screen goes blank on submit */}
- {/* screen currently doesnt submit anything */}
-    {/* <ChoreChart chore={choreLogs}/> */}
+    <ChoreChart choreLogs={choreLogs}/>
     </>
     )
 }
