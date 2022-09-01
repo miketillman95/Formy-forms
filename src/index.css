@@ -36,8 +36,11 @@ body{
     padding: 10px
 
   }
-  .chorelog-container{
-    background-color: antiquewhite;
+  .chorelog-words{
+    display: flex;
+    flex-direction: row;
+    margin-left: 40px;
+    padding: 10px
   }
 
 

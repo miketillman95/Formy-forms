@@ -8,7 +8,7 @@ const ChoreChart = ({choreLogs}) => {
          <h3>Date</h3>
          <h3>Chore Description</h3>
        </div>
-    <div className='choreLog-words'>
+    <div className='chorelog-words'>
         <p>{choreLogs.name}</p>
         <p>{choreLogs.date}</p>
         <p>{choreLogs.choreDesc}</p>
