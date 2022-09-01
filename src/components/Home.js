@@ -19,7 +19,6 @@ const Home = () => {
               <nav>
                 <Link to='/chores'>Chore List</Link>
                 <br/>
-                <Link  to='/chorechart'>Chore Chart</Link>
 
                 <br/>
               </nav>

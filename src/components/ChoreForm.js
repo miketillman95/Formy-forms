@@ -16,7 +16,7 @@ const ChoreForm = () => {
 
 
     const addChoreLog= (log) => {
-        console.log(log, 'adding the chore to the log')
+        // console.log(log, 'adding the chore to the log')
         setChoreLogs(log)
     }
 
@@ -30,18 +30,7 @@ const ChoreForm = () => {
         setFormValues({...formValues, [name]: value})
     }
 
-    const handleSubmit = (e) =>{
-        // adds the chores of desc, name and date from the state in app.js
-        e.preventDefault()
-        setFormErrors(validate(formValues))
-        addChoreLog(formValues)
-        setIsSubmitting(true)
-
-
-
-
-
-    }
+  
     function choreAlert() {
         navigate('/chorechart')
     }
@@ -73,6 +62,20 @@ const ChoreForm = () => {
     return errors
 
     }
+    const handleSubmit = (e) =>{
+        // adds the chores of desc, name and date from the state in app.js
+        setFormErrors(validate(formValues))
+        setIsSubmitting(true)
+        addChoreLog(formValues)
+        e.preventDefault()
+
+
+
+
+
+
+
+    }
 
     useEffect(()=> {
         if(Object.keys(formErrors).length === 0 && isSubmitting){
@@ -84,15 +87,16 @@ const ChoreForm = () => {
     
       
   return (
-    <>
+    <div className='page'>
     {/* form wonr clear after submission */}
-<form onSubmit={e => {handleSubmit(e)}} noValidate>
+<form onSubmit={e => {handleSubmit(e)}} >
 {Object.keys(formErrors).length === 0 && isSubmitting && (
         <span className="success-msg">Submitted successfully</span>
       )}
+      <div className='form-container'>
         <label> Chore description</label>
             <br/>
-            <input 
+            <input className='field'
                 name= 'choreDesc'
                 type= 'text'
                 onChange={handleChange}
@@ -106,6 +110,7 @@ const ChoreForm = () => {
         <label>Name</label>
             <br/>
             <input 
+            className='field'
                 name='name'
                 type= 'text'
                 onChange={handleChange}
@@ -119,6 +124,7 @@ const ChoreForm = () => {
         <label>Date</label>
             <br/>
             <input 
+            className='field'
             name='date'
             type= 'date'
             onChange={handleChange}
@@ -134,11 +140,12 @@ const ChoreForm = () => {
             type = 'submit'
             value = 'Log chore'
             // onClick={choreAlert}
-            />  
+            /> 
+            </div> 
     </form>
  
     <ChoreChart choreLogs={choreLogs}/>
-    </>
+    </div>
     )
 }
 

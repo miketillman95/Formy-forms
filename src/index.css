@@ -1,1 +1,44 @@
+/* global page */
+body{
+    background-color: darkgray;
+}
+/* choreform */
+.page {
+    max-width: 600px;
+    margin: auto;
+  }
+  .form-container{
+    display: flex;
+    flex-direction: column;
+    background-color: burlywood;
+    padding-top: 50px;
+    padding-bottom: 60px;
+    padding-left: 50px;
+    padding-right: 50px;
+    border-radius: 9%;
+  }
+   input.field{
+    height: 30px;
+    font-size: 16px;
+    background-color: burlywood;
 
+  }
+  .submitBtn{
+    height: 40px;
+    background-color: darkcyan;
+  }
+
+  .chorelog-header{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    margin: 10px;
+    padding: 10px
+
+  }
+  .chorelog-container{
+    background-color: antiquewhite;
+  }
+
+
+  /* choreChart */
